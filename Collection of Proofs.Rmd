@@ -1,0 +1,113 @@
+---
+title: "A collection of proofs"
+author: "Sharon Hui"
+date: "1/18/2024"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Exercises
+
+This section has almost nothing to do with Stat 135. It is a collection of proofs and exercises of useful facts/theorems. Personally, for me to truly believe and understand a statistical theorem, I need to see and understand the proof. Additionally, since I don't have the luxury of being a student anymore, having this section here keeps me accountable for always improving my proof-writing skills. If there are errors, please let me know. I would greatly appreciate it!
+
+
+As a personal philosophy, I believe that we are all models. We learn skills through examples and practice, just like a model learns to predict and classify through training data. Another thing I would like to say is that a model may be penalized for getting the answer wrong, but it doesn't stop trying to learn. It only really stops learning when it runs out of examples to learn. 
+
+What makes humans so incredible is that we are the vessels for many learning tasks. Given that we have this unique advantage over modeling, we have to keep learning and practice to get better at our crafts. With that being said, I'll be sporadically updating this page with problems/proofs.
+
+
+Happy learning!
+
+
+
+## Problem 1: Pairwise Euclidean distances and variance
+
+Consider using Euclidean distances to measure how far points are from each other.
+
+Show that the sum of all pairwise distances between a sample of individuals is directly related to variance.
+
+
+$$\sum_{i=1}^{n}\sum_{\ell=1}^{n} d^{2}(i, \ell) = (2n^{2}) \sum_{i=1}^{n} d^{2}(i,g)$$
+
+Here, $g$ is the centroid.
+
+Solution:
+
+What we are really showing is:
+
+$$\sum_{i=1}^{n}\sum_{\ell=1}^{n} (x_{i} - x_{\ell})^2 = 2n \sum_{i=1}^{n} (x_i - \bar{x})^2$$
+
+
+From the left side:
+
+$$\sum_{i=1}^{n}\sum_{\ell=1}^{n} \left[x_{i}^2 - 2x_{i}x_{\ell} + x_{\ell}^2\right]= \sum_{i=1}^{n} \left(n x_{i}^{2} - 2x_{i}\sum_{\ell=1}^{n}  x_{l} + \sum_{\ell=1}^{n}x_{\ell}^{2} \right) = \sum_{i=1}^{n} \left(n x_{i}^{2} - 2x_{i} n \bar x + \sum_{\ell=1}^{n}x_{\ell}^{2} \right)$$
+
+$$n\sum_{i=1}^{n}  x_{i}^{2} - 2n{\bar x} n \bar{x} + n \sum_{\ell=1}^{n} x_{\ell}^{2} = 2n \sum_{i=1}^{n}  x_{i}^{2} - 2n^{2} \bar x^2 = 2n\left[\sum_{i=1}^{n}  x_{i}^{2}  -  n \bar {x}^2 \right] = 2n \sum_{i=1}^{n} (x_{i} - \bar{x})^{2}$$
+
+Notice  $\sum_{i=1}^{n} (x_{i} - \bar{x})^{2} = \sum_{i=1}^{n} x_{i}^{2} - 2{\bar {x}} n \bar {x} + n \bar {x}^{2} = \sum_{i=1}^{n} x_{i}^{2} - n{\bar x}^{2}$
+
+This ultimately shows us that minimizing the variance is the same as minimizing the pairwise distance.
+
+## Centering matrix
+
+When you multiply the centering matrix ($\bf C_n=I_{n}-{\tfrac {1}{n}}J_{n}$ where $I_{n}$, is the identity matrix of size $n$ and $J_n$ is an $n$-by-$n$ matrix of all 1's.) with a vector, it is effectively the same as subtracting the mean of the components of the vector from every component of that vector. Prove the following: The centering matrix is a symmetric and idempotent matrix; this is called being a projection matrix. The centering matrix is also positive semi-definite. 
+
+
+First, let's prove $\bf C_n$ is symmetric
+
+I want to show that $\bf C_n$ is symmetric, which means that ${\bf C_n}^T = \bf C_n$
+
+Using the properties of a transpose, notice that $({\bf {A-B}})^T ={\bf { A}}^T - {\bf {B}}^T$
+
+$${\bf C_n}^T = \left({\bf I_n} - \frac{1}{n} \bf{1} \bf{1}^T \right) ^T =  ({\bf I_n})^T - \left(\frac{1}{n} \bf{1} \bf{1}^T \right)^T = {\bf I_n} - \frac{1}{n} (\bf{1}^T)^T (\bf{1})^T$$
+$$= \left({\bf I_n} - \frac{1}{n} \bf{1} \bf{1}^T \right) = {\bf C_n}$$
+Since ${\bf C_n}^T = {\bf C_n}$, this means that ${\bf C_n}$ is symmetric.
+
+Next, let's show $\bf C_n$ is idempotent
+
+I want to show that $\bf C_n$ is idempotent, which means that ${\bf C_n}^2 = \bf C_n$. 
+
+Firstly, notice that ${\bf 1}$ is a n by 1 vector:
+
+$${\bf 1}=\begin{bmatrix}
+    1 \\
+    1\\
+    \vdots \\
+    1
+    \end{bmatrix}$$
+$${\bf 1}^T=\begin{bmatrix}
+    1 & 1 & \cdots & 1
+    \end{bmatrix}$$
+This means that 
+
+$${\bf 1}^T{\bf 1}= \begin{bmatrix}
+    1 & 1 & \cdots & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+    1 \\
+    1\\
+    \vdots \\
+    1
+    \end{bmatrix} = \sum_{i=1}^n 1=n$$
+
+$${\bf C_n}^2 = {\bf C_n}{\bf C_n}  = ({\bf I}_n - \frac{1}{n} {\bf{1}} {\bf{1}}^T)({\bf I}_n - \frac{1}{n} {\bf{1}} {\bf{1}}^T)$$
+$$= {\bf I_n I_n} - {\bf I_n}\frac{1}{n}{{\bf 1} {\bf 1}^T} - \frac{1}{n}{{\bf 1} {\bf 1}^T}{\bf I_n} + \frac{1}{n^2}{{\bf 1} {\bf 1}^T}{{\bf 1} {\bf 1}^T}$$
+$$= {\bf I_n I_n} - {\bf I_n}\frac{1}{n}{{\bf 1} {\bf 1}^T} - \frac{1}{n}{{\bf 1} {\bf 1}^T}{\bf I_n} + \frac{1}{n^2}{{\bf 1}} n {{\bf 1}^T}={\bf I_n I_n} - \frac{1}{n}{{\bf 1} {\bf 1}^T} - \frac{1}{n}{{\bf 1} {\bf 1}^T} + \frac{1}{n}{{\bf 1}}  {{\bf 1}^T}$$
+$$= {\bf I_n} - \frac{1}{n}{{\bf 1} {\bf 1}^T} ={\bf C_n}$$
+
+This shows that ${\bf C_n}^2 = {\bf C_n}$.
+
+Lastly, let's show ${\bf C_n}$ is PSD.
+
+For ${\bf C_n}$ to be PSD, it means for all non-zero ${\bf x} \in {\mathbb R}$, ${\bf x}^{T} {\bf C_n} {\bf x} \geq 0$
+
+
+$${\bf x}^{T} \left( {\bf I_n} - \frac{1}{n}{{\bf 1} {\bf 1}^T}\right) {\bf x}$$
+
+$${\bf x}^{T} {\bf x} - \frac{1}{n} {\bf x}^{T} {{\bf 1} {\bf 1}^T} {\bf x} = \sum_{i=1}^{n} x_{i}^{2} - \frac{1}{n} \sum_{i=1}^{n} x_{i} \sum_{i=1}^{n} x_{i}=\sum_{i=1}^{n} x_{i}^{2} -  n {\bar x}^{2}=\sum_{i=1}^{n} (x_{i} - \bar{x})^{2} \geq 0$$
+Notice  $\sum_{i=1}^{n} (x_{i} - \bar{x})^{2} = \sum_{i=1}^{n} x_{i}^{2} - 2{\bar {x}} n \bar {x} + n \bar {x}^{2} = \sum_{i=1}^{n} x_{i}^{2} - n{\bar x}^{2}$
+
+
