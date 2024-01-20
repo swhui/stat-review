@@ -110,4 +110,28 @@ $${\bf x}^{T} \left( {\bf I_n} - \frac{1}{n}{{\bf 1} {\bf 1}^T}\right) {\bf x}$$
 $${\bf x}^{T} {\bf x} - \frac{1}{n} {\bf x}^{T} {{\bf 1} {\bf 1}^T} {\bf x} = \sum_{i=1}^{n} x_{i}^{2} - \frac{1}{n} \sum_{i=1}^{n} x_{i} \sum_{i=1}^{n} x_{i}=\sum_{i=1}^{n} x_{i}^{2} -  n {\bar x}^{2}=\sum_{i=1}^{n} (x_{i} - \bar{x})^{2} \geq 0$$
 Notice  $\sum_{i=1}^{n} (x_{i} - \bar{x})^{2} = \sum_{i=1}^{n} x_{i}^{2} - 2{\bar {x}} n \bar {x} + n \bar {x}^{2} = \sum_{i=1}^{n} x_{i}^{2} - n{\bar x}^{2}$
 
+Since ${\bf C_n}$ are PSD, the eigenvalues of ${\bf C_n}$ are either zero or one.
 
+Alternatively, we can show it by using the idempotency of ${\bf C_n}$. 
+Let ${\bf C_n} {\bf v_i}= \lambda_i {\bf v_i}$ where ${\bf v_i}$ is a eigenvector and $\lambda_i$ is its corresponding eigenvalue.
+
+$$\lambda_i {\bf v_i} = {\bf C_n} {\bf v_i} = {\bf C_n}^2 {\bf v_i} = {\bf C_n}{\bf C_n} {\bf v_i} = {\bf C_n}\lambda_i {\bf v_i} = \lambda_i {\bf C_n} {\bf v_i} = \lambda_i\lambda_i {\bf v_i}= \lambda_i^2 {\bf v_i}$$
+
+This means that $\lambda_i {\bf v_i} = \lambda_i^2 {\bf v_i}$ must hold true, which is only when $\lambda_i$ is 0 or 1.
+
+## Symmetric Matrices
+
+
+Eigenvectors of real symmetric matrices are orthogonal.
+
+If A is symmetric, then $\bf A = \bf A^T$. By definition, $\bf A \bf v_i = \lambda_i \bf v_i$ and $\bf A \bf v_j = \lambda_j \bf v_j$.
+
+$$\lambda_i {\bf v_i^T}{\bf v_j}={\bf (\lambda_i v_i)^T}{\bf v_j}={\bf (A v_i)^T}{\bf v_j}= {\bf v_i^T} {\bf A^T} {\bf v_j}={\bf v_i^T} ({\bf A^T} {\bf v_j})={\bf v_i^T} ({\bf A} {\bf v_j})={\bf v_i^T} (\lambda_j {\bf v_j})=\lambda_j{\bf v_i^T} ( {\bf v_j})$$
+
+$$\lambda_i {\bf v_i^T}{\bf v_j}=\lambda_j{\bf v_i^T} ( {\bf v_j})$$
+
+This means that
+
+$$\lambda_i {\bf v_i^T}{\bf v_j}-\lambda_j{\bf v_i^T}  {\bf v_j}=0$$
+
+Since ${\lambda_i}$ and ${\lambda_j}$ are two distinct eigenvalues meaning ${\lambda_i} \neq {\lambda_j}$, this must imply that ${\bf v_i^T}{\bf v_j}=0$
