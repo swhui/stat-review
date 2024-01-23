@@ -135,3 +135,34 @@ This means that
 $$\lambda_i {\bf v_i^T}{\bf v_j}-\lambda_j{\bf v_i^T}  {\bf v_j}=0$$
 
 Since ${\lambda_i}$ and ${\lambda_j}$ are two distinct eigenvalues meaning ${\lambda_i} \neq {\lambda_j}$, this must imply that ${\bf v_i^T}{\bf v_j}=0$
+
+
+## Linear Regression
+
+Assume that the following linear relationship is true: $Y = X\beta + \epsilon$, where $\epsilon \sim N(0, \sigma^{2})$. 
+
+Let $Y =\begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix}$ and $X=\begin{bmatrix} x_{11} & x_{12} & \cdots x_{1p} \\ \vdots \\ x_{n1} & x_{n2} & \cdots x_{np} \end{bmatrix}$, so $X$ is a $n \times p$ matrix.
+
+We want to find the best linear fit to the data so ${\hat Y} = X {\hat \beta}$. Choosing that we want to minimize the squared loss, then we want to minimize $$\| {Y} - {\hat Y}  \| = \| {Y} - {X {\hat \beta}} \|$$. Then $$({Y} - {X {\hat \beta}})^{T}({Y} - {X {\hat \beta}}) = Y^{T}Y - {\hat \beta}^{T} X^{T}Y - Y^{T}X{\hat \beta} + {\hat \beta}^{T} X^{T} X {\hat \beta} = 
+Y^{T}Y - 2 {\hat \beta}^{T} X^{T}Y + {\hat \beta}^{T} X^{T} X {\hat \beta}$$
+Taking derivative with respect to $\hat \beta$ and set to $0$: $$X^{T}Y= X^{T} X {\hat \beta} \longrightarrow {\hat \beta } = (X^{T}X)^{-1}X^{T}Y$$
+Know that this requires $X^{T}X$ to be invertible, which happens when $X$ is full rank.
+
+$$E[Y] = E[X\beta + \epsilon] = X \beta$$
+$$Cov(Y) = Cov(X\beta + \epsilon) = Cov(\epsilon) = \sigma^{2}$$
+
+$$E[{\hat \beta}] = E[(X^{T}X)^{-1}X^{T}Y] = (X^{T}X)^{-1}X^{T} X \beta = \beta$$
+
+$$Var({\hat \beta})= Cov({\hat \beta}, {\hat \beta}) = Cov((X^{T}X)^{-1}X^{T}Y, (X^{T}X)^{-1}X^{T}Y) = (X^{T}X)^{-1}X^{T} Cov(Y,Y) ((X^{T}X)^{-1}X^{T})^{T}$$
+$$=(X^{T}X)^{-1}X^{T} \sigma^{2} X (X^{T}X)^{-1} = \sigma^{2} (X^{T}X)^{-1}$$
+
+## Weighted Least Squares
+
+
+Weighted least squares is used when linear measurements are corrupted by errors with unequal variances. We want to minimize $\sum_{i=1}^{n} w_{i} (y_{i} - \sum_{j=1}^{p} x_{ij} \beta_{j})^{2}$ with the constraint $w_{1},..., w_{n} \geq 0$
+
+
+
+## Least Squares with Regularization
+
+## Correlation Matrix
