@@ -159,7 +159,21 @@ $$=(X^{T}X)^{-1}X^{T} \sigma^{2} X (X^{T}X)^{-1} = \sigma^{2} (X^{T}X)^{-1}$$
 ## Weighted Least Squares
 
 
-Weighted least squares is used when linear measurements are corrupted by errors with unequal variances. We want to minimize $\sum_{i=1}^{n} w_{i} (y_{i} - \sum_{j=1}^{p} x_{ij} \beta_{j})^{2}$ with the constraint $w_{1},..., w_{n} \geq 0$
+Weighted least squares is used when linear measurements are corrupted by errors with unequal variances. We want to minimize $\sum_{i=1}^{n} w_{i} (Y_{i} - \sum_{j=1}^{p} x_{ij} \beta_{j})^{2}$ with the constraint $w_{1},..., w_{n} \geq 0$
+
+In matrix form, the equivalent problem is ${\arg\min}_{\beta} \|W^{1/2} (Y-X\beta) \|^{2}$, with $W$ being a symmetric, positive-definite weighting matrix.
+
+The normal equations are then:
+
+$$(W^{1/2} (Y-X\beta) )^{T} (W^{1/2} (Y-X\beta) ) = (Y^{T} - \beta^{T} X^{T}) (W^{1/2})^{T} W^{1/2} (Y-X\beta) = Y^{T} W Y - \beta^{T} X^{T} W Y - Y^{T} WX \beta + \beta^{T} X^{T} W X \beta$$
+
+Take derivative wrt $\beta$ and set to $0$:
+
+$$2X^{T} W Y = 2X^{T} W X \beta \longrightarrow {\hat \beta} = (X^{T} W X)^{-1} X^{T}W Y$$
+
+Weighted least squares is essentially the same as transforming $X$ and $Y$ and $\epsilon$.
+
+The main advantage of using WLS is the retainment of interpretations of the coefficients and interpretting F-tests and R-squared values (usually WLS keeps the intercept while transformed models do not). It is also advantageous to downweight outlier or influential points by setting its weight to 0.
 
 
 
