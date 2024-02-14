@@ -165,7 +165,8 @@ In matrix form, the equivalent problem is ${\arg\min}_{\beta} \|W^{1/2} (Y-X\bet
 
 The normal equations are then:
 
-$$(W^{1/2} (Y-X\beta) )^{T} (W^{1/2} (Y-X\beta) ) = (Y^{T} - \beta^{T} X^{T}) (W^{1/2})^{T} W^{1/2} (Y-X\beta) = Y^{T} W Y - \beta^{T} X^{T} W Y - Y^{T} WX \beta + \beta^{T} X^{T} W X \beta$$
+$$(W^{1/2} (Y-X\beta) )^{T} (W^{1/2} (Y-X\beta) ) = (Y^{T} - \beta^{T} X^{T}) (W^{1/2})^{T} W^{1/2} (Y-X\beta)$$
+$$= Y^{T} W Y - \beta^{T} X^{T} W Y - Y^{T} WX \beta + \beta^{T} X^{T} W X \beta$$
 
 Take derivative wrt $\beta$ and set to $0$:
 
@@ -173,10 +174,28 @@ $$2X^{T} W Y = 2X^{T} W X \beta \longrightarrow {\hat \beta} = (X^{T} W X)^{-1} 
 
 Weighted least squares is essentially the same as transforming $X$ and $Y$ and $\epsilon$.
 
-The main advantage of using WLS is the retainment of interpretations of the coefficients and interpretting F-tests and R-squared values (usually WLS keeps the intercept while transformed models do not). It is also advantageous to downweight outlier or influential points by setting its weight to 0.
+The main advantage of using WLS is the retainment of interpretations of the coefficients and interpreting F-tests and R-squared values (usually WLS keeps the intercept while transformed models do not). It is also advantageous to downweight outlier or influential points by setting its weight to 0.
 
+
+## Correlation Matrix
 
 
 ## Least Squares with Regularization
 
-## Correlation Matrix
+### Ridge Regression
+
+With regularization, extra terms (variables) are added to the cost function (to avoid overfitting). 
+$$\min \sum_{i=1}^{n} (y_{i} - x_{i^{T}}\beta)^{2} + \rho \sum_{j=1}^{p} \beta_{j}^{2}$$
+with the constraint that $\rho > 0$.
+
+
+### Lasso Regression
+
+With regularization, extra terms (variables) are added to the cost function (to avoid overfitting). 
+$$\min \sum_{i=1}^{n} (y_{i} - x_{i^{T}}\beta)^{2} + \lambda \sum_{j=1}^{p} |\beta_{j} |$$
+with the constraint that $\lambda > 0$.
+
+Alternatively, we can write $$\min \| Y-X\beta \|^{2}_{2} + \lambda \| \beta \|_{1}$$
+
+
+
