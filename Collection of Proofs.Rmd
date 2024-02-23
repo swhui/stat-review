@@ -180,6 +180,8 @@ The main advantage of using WLS is the retainment of interpretations of the coef
 ## Correlation Matrix
 
 
+The correlation matrix is a symmetric PSD matrix with unit diagonal.
+
 ## Least Squares with Regularization
 
 ### Ridge Regression
