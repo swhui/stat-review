@@ -182,6 +182,11 @@ The main advantage of using WLS is the retainment of interpretations of the coef
 
 The correlation matrix is a symmetric PSD matrix with unit diagonal.
 
+
+Covariance between two random variables, $X$ and $Y$: $Cov(X, Y) = {\mathbb E}[(X-{\mathbb E}(X))(Y-{\mathbb E}(Y))] = {\mathbb E}[XY - Y{\mathbb E}(X) - X {\mathbb E}(Y) + {\mathbb E}(X) {\mathbb E}(Y) ] = {\mathbb E}(XY) - {\mathbb E}(X) {\mathbb E}(Y)$, provided that the expectation exists.
+
+
+
 ## Least Squares with Regularization
 
 ### Ridge Regression
