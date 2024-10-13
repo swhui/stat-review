@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Exercises
 
-This section has almost nothing to do with Stat 135. It is a collection of proofs and exercises of useful facts/theorems. Personally, for me to truly believe and understand a statistical theorem, I need to see and understand the proof. Additionally, since I don't have the luxury of being a student anymore, having this section here keeps me accountable for always improving my proof-writing skills. If there are errors, please let me know. I would greatly appreciate it!
+This section has almost nothing to do with Stat 135. It is a collection of proofs and exercises of useful facts/theorems. Personally, for me to truly believe and understand a statistical theorem, I need to see and understand the proof. Additionally, since I don't have the luxury of being a student anymore, having this section here keeps me accountable for always improving my proof-writing skills. If there are errors, please let me know. 
 
 
 As a personal philosophy, I believe that we are all models. We learn skills through examples and practice, just like a model learns to predict and classify through training data. Another thing I would like to say is that a model may be penalized for getting the answer wrong, but it doesn't stop trying to learn. It only really stops learning when it runs out of examples to learn. 
